@@ -106,7 +106,7 @@
 
   .badge {
     display: inline-flex; align-items: center; gap: 0.5rem;
-    background: rgba(10,33,192,0.08);
+    background: rgba(192, 10, 10, 0.342);
     border: 1px solid rgba(10,33,192,0.2);
     color: var(--blue-primary); font-size: 0.8rem; font-weight: 600;
     padding: 0.4rem 1rem; border-radius: 50px;
@@ -304,7 +304,7 @@
   .event-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.05rem; color: var(--dark); }
   .event-desc { color: var(--text-dim); font-size: 0.85rem; margin-top: 0.2rem; }
   .event-badge { padding: 0.35rem 0.9rem; border-radius: 50px; font-size: 0.75rem; font-weight: 700; flex-shrink: 0; }
-  .badge-upcoming { background: rgba(10,33,192,0.08); color: var(--blue-primary); border: 1px solid rgba(10,33,192,0.2); }
+  .badge-upcoming { background: rgba(19, 10, 192, 0.196); color: var(--blue-primary); border: 1px solid rgba(10,33,192,0.2); }
   .badge-past     { background: rgba(107,109,130,0.08); color: var(--text-dim); border: 1px solid rgba(107,109,130,0.2); }
 
   /* ─── STARTUPS ─── */
