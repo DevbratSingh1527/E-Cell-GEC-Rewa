@@ -266,4 +266,54 @@ document.addEventListener('click', function(e) {
 });
 // Close menu on scroll
 window.addEventListener('scroll', closeMenu, { passive: true });
+document.addEventListener("DOMContentLoaded", () => {
+    // Select all photo cards within your photo grid
+    const photoCards = document.querySelectorAll('.photo-grid .photo-card');
+    const maxVisible = 6;
 
+    // Check if there are more than 6 photos
+    if (photoCards.length > maxVisible) {
+        // Calculate how many extra photos there are
+        const extraPhotosCount = photoCards.length - maxVisible;
+
+        // Hide all cards from the 7th onwards
+        photoCards.forEach((card, index) => {
+            if (index >= maxVisible) {
+                card.style.display = 'none';
+            }
+        });
+
+        // Target the 6th card (index 5)
+        const sixthCard = photoCards[maxVisible - 1];
+        
+        // Ensure the 6th card can contain the absolute overlay properly
+        sixthCard.style.position = 'relative'; 
+
+        // Create the "+N" overlay element
+        const overlayDiv = document.createElement('div');
+        overlayDiv.classList.add('more-photos-overlay');
+        overlayDiv.innerText = `+${extraPhotosCount}`;
+
+        // Append the overlay to the 6th card
+        sixthCard.appendChild(overlayDiv);
+    }
+});
+function toggleDropdown(element) {
+    // 1. Kis event par click hua hai usko dhoondo
+    const clickedItem = element.closest('.event-item');
+    
+    // 2. Page par jitne bhi event items hain sabko select karo
+    const allItems = document.querySelectorAll('.event-item');
+    
+    // 3. Sab items ko check karo
+    allItems.forEach(item => {
+        // Agar wo item wo nahi hai jispar humne abhi click kiya hai...
+        if (item !== clickedItem) {
+            // ...toh uski 'active' class hata do (usko close kar do)
+            item.classList.remove('active');
+        }
+    });
+    
+    // 4. Finally, jispar click kiya hai usko open ya close karo
+    clickedItem.classList.toggle('active');
+}

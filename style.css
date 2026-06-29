@@ -1,35 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
 :root {
     --blue-primary: #0A21C0;
-    --blue-deep:    #050A44;
-    --blue-mid:     #2C2E3A;
-    --dark:         #141619;
-    --silver:       #B3B4BD;
-    --bg:           #ffffff;
-    --bg-soft:      #F4F5FF;
-    --bg-card:      #ffffff;
-    --border:       #E0E2F0;
-    --text:         #141619;
-    --text-dim:     #6B6D82;
+    --blue-deep: #050A44;
+    --blue-mid: #2C2E3A;
+    --dark: #141619;
+    --silver: #B3B4BD;
+    --bg: #ffffff;
+    --bg-soft: #F4F5FF;
+    --bg-card: #ffffff;
+    --border: #E0E2F0;
+    --text: #141619;
+    --text-dim: #6B6D82;
     /* keep legacy vars mapped so all var() refs still work */
-    --yellow:       #0A21C0;
-    --orange:       #0A21C0;
-    --mint:         #B3B4BD;
-    --navy:         #141619;
-    --card-bg:      #ffffff;
-    --card-border:  #E0E2F0;
-    --deep-blue:    #050A44;
-    --bright-blue:  #0A21C0;
-  }
+    --yellow: #0A21C0;
+    --orange: #0A21C0;
+    --mint: #B3B4BD;
+    --navy: #141619;
+    --card-border: #E0E2F0;
+    --deep-blue: #050A44;
+    --bright-blue: #0A21C0;
+}
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: 'Plus Jakarta Sans', sans-serif !important; 
+}
 
-  body {
+html { 
+    scroll-behavior: smooth; 
+}
+
+body {
     background: var(--bg);
     color: var(--text);
-    font-family: 'Plus Jakarta Sans', sans-serif;
     overflow-x: hidden;
-  }
+}
 
   /* ─── NAV ─── */
   nav {
@@ -136,7 +144,7 @@
 
   .hero-sub {
     max-width: 560px; margin: 1.5rem auto 0;
-    color: var(--text-dim); font-size: 1.1rem; line-height: 1.7;
+    color: var(--text); font-size: 1.1rem; line-height: 1.7;
     animation: fadeUp 0.7s 0.2s ease both;
   }
 
@@ -1607,4 +1615,53 @@ body.dark .hamburger span { background: #e8eaf6; }
   }
   body.dark .nav-links a { color: #e8eaf6; border-color: #2a2d42; }
 }
+/* Styling for the +N overlay on the 6th image */
+.more-photos-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75); /* Dark semi-transparent background */
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem; /* Adjust size as needed */
+    font-weight: bold;
+    z-index: 20; /* Ensures it sits above your existing .photo-card-overlay */
+    border-radius: inherit; /* Matches your card's border radius if you have one */
+    cursor: pointer;
+}
+/* INSIDE YOUR CSS FILE */
 
+/* Make your new wrapper look clickable and keep items aligned */
+.event-header {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* Hidden Dropdown Setup */
+.event-dropdown {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, padding 0.4s ease-out, margin 0.4s ease-out;
+}
+
+/* Styling for the links inside dropdown */
+.event-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+/* When active class is added via JS, expand the dropdown */
+.event-item.active .event-dropdown {
+    max-height: 400px; /* Adjust this if your dropdown text is very long */
+    margin-top: 20px; /* Adds space between your header and the new text */
+    padding-top: 15px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1); /* Subtle line to separate details */
+}
