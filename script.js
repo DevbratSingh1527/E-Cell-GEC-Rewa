@@ -317,3 +317,16 @@ function toggleDropdown(element) {
     // 4. Finally, jispar click kiya hai usko open ya close karo
     clickedItem.classList.toggle('active');
 }
+// Carousel Slider Logic
+function slideLeft() {
+    const slider = document.getElementById('championSlider');
+    // Card ki width ke hisaab se scroll karega
+    const scrollAmount = slider.clientWidth; 
+    slider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+}
+
+function slideRight() {
+    const slider = document.getElementById('championSlider');
+    const scrollAmount = slider.clientWidth; 
+    slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+}

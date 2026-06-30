@@ -1633,35 +1633,156 @@ body.dark .hamburger span { background: #e8eaf6; }
     border-radius: inherit; /* Matches your card's border radius if you have one */
     cursor: pointer;
 }
-/* INSIDE YOUR CSS FILE */
+/* =========================================
+   CLICKABLE ANNOUNCEMENT BANNER
+   ========================================= */
+.announcement-banner {
+    display: block; /* Pure banner ko clickable banata hai */
+    background: var(--blue-primary);
+    color: white;
+    width: 100%;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none; /* Link ke niche aane wali line ko hatata hai */
+    position: relative;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    
+    /* Ye animation website khulte hi banner ko smooth slide-down effect degi */
+    animation: slideDown 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    transition: background 0.3s ease;
+}
 
-/* Make your new wrapper look clickable and keep items aligned */
-.event-header {
-    cursor: pointer;
+.announcement-banner:hover {
+    background: var(--blue-deep); /* Hover karne par thoda dark hoga */
+}
+
+.banner-text {
+    font-size: 1rem;
+    letter-spacing: 0.3px;
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
+}
+/* =========================================
+   CAROUSEL & WALL OF FAME SLIDER
+   ========================================= */
+/* =========================================
+   CAROUSEL & WALL OF FAME SLIDER
+   ========================================= */
+.carousel-wrapper {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    width: 100%;
 }
 
-/* Hidden Dropdown Setup */
-.event-dropdown {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease-out, padding 0.4s ease-out, margin 0.4s ease-out;
-}
-
-/* Styling for the links inside dropdown */
-.event-links {
+/* Slider Container */
+.champion-slider {
     display: flex;
-    gap: 15px;
-    margin-top: 15px;
+    gap: 30px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding: 20px 0;
+    width: 100%;
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
 }
 
-/* When active class is added via JS, expand the dropdown */
-.event-item.active .event-dropdown {
-    max-height: 400px; /* Adjust this if your dropdown text is very long */
-    margin-top: 20px; /* Adds space between your header and the new text */
-    padding-top: 15px;
-    border-top: 1px solid rgba(0, 0, 0, 0.1); /* Subtle line to separate details */
+.champion-slider::-webkit-scrollbar {
+    display: none;
 }
+
+/* Individual Card Setup (Updated for Perfect Size) */
+.champion-card {
+    flex: 0 0 100%; 
+    scroll-snap-align: center; 
+    display: flex;
+    background: var(--bg-card);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border);
+    transition: transform 0.3s ease;
+    
+    /* Yahan height aur width lock ki gayi hai */
+    max-width: 850px; 
+    height: 420px; 
+    margin: 0 auto;
+}
+
+.champion-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Photo Area Adjustments */
+.champion-photo-wrapper { 
+    width: 38%; /* Photo ab thodi kam jagah legi */
+    position: relative; 
+}
+
+.champion-photo-wrapper img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    display: block; 
+    object-position: top; /* Face hamesha center me rahega */
+}
+/* Buttons (Arrows) */
+.slide-btn {
+    background: white;
+    border: 1px solid var(--border);
+    color: var(--blue-primary);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    position: absolute;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+.slide-btn:hover {
+    background: var(--blue-primary);
+    color: white;
+}
+.left-btn { left: -25px; }
+.right-btn { right: -25px; }
+
+/* Desktop card internals */
+.champion-photo-wrapper { width: 45%; position: relative; }
+.champion-photo-wrapper img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.champion-badge { position: absolute; top: 40px; left: 40px; background: #FFD700; color: #000000; padding: 8px 18px; border-radius: 30px; font-weight: 700; font-size: 0.95rem; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+.champion-info { width: 55%; padding: 40px; display: flex; flex-direction: column; justify-content: center; }
+.champion-team { font-size: 4rem; color: var(--blue-deep); margin-bottom: 5px; }
+.champion-names { color: var(--text-dim); font-size: 1.05rem; margin-bottom: 25px; font-weight: 500; }
+.champion-quote { font-size: 1.5rem; line-height: 1.7; color: var(--text); font-style: italic; border-left: 4px solid var(--blue-primary); background: rgba(10, 33, 192, 0.03); padding: 20px; border-radius: 0 12px 12px 0; margin-bottom: 25px; }
+.champion-project { background: var(--bg-soft); padding: 15px 20px; border-radius: 8px; font-size: 0.95rem; color: var(--blue-deep); border: 1px solid var(--border); }
+
+
+/* =========================================
+   MOBILE RESPONSIVENESS (CAROUSEL SLIDER)
+   ========================================= */
+@media screen and (max-width: 768px) {
+    /* Mobile par card 85% width lega, taaki next card ka 15% hissa side mein dikhe! */
+    .champion-card {
+        flex: 0 0 88%; 
+        flex-direction: column;
+        height: auto;
+    }
+    
+    /* Mobile par arrows hide kar do (log swipe karna pasand karte hain) */
+    .slide-btn {
+        display: none;
+    }
+
+    /* Image aur text mobile ke hisaab se adjust */
+    .champion-photo-wrapper { width: 100%; height: 250px; }
+    .champion-info { width: 100%; padding: 25px; }
+    .champion-team { font-size: 1.6rem; }
+  }

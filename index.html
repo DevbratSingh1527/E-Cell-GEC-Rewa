@@ -24,7 +24,12 @@
 <meta name="google-site-verification" content="oUdleDK0uGtkI8A_PqYEVEVCr4N-M7N880hJrcuxCP0" />
 </head>
 <body>
-
+<!-- TOP ANNOUNCEMENT BANNER (CLICKABLE) -->
+<a href="#wall-of-fame" class="announcement-banner" id="winnerBanner">
+    <div class="banner-content-wrapper">
+        <span class="banner-text">🎉 <strong>PentaQuest 2K26 Results are out!</strong> Click here to meet our champions. 🏆</span>
+    </div>
+</a>
 <!-- NAV -->
 <nav>
   <div class="nav-logo" style="display:flex;align-items:center;gap:0.55rem;">
@@ -301,7 +306,65 @@
     </div>
   </div>
 </section>
+<!-- ==========================================
+     WALL OF FAME SECTION (SLIDER)
+     ========================================== -->
+<section id="wall-of-fame" style="background: var(--bg-soft); padding: 5rem 5%; position: relative;">
+    
+    <div class="wall-header" style="text-align: center; margin-bottom: 3rem;">
+        <span class="section-tag reveal">Wall of Fame</span>
+        <h2 class="section-title reveal">Meet the Champions</h2>
+        <p class="section-desc reveal" style="max-width: 600px; margin: 0 auto;">
+            Swipe to see the brilliant minds who conquered our challenges!
+        </p>
+    </div>
 
+    <!-- Slider Wrapper with Arrows -->
+    <div class="carousel-wrapper reveal">
+        
+        <!-- Left Arrow (Desktop ke liye) -->
+        <button class="slide-btn left-btn" onclick="slideLeft()">&#10094;</button>
+
+        <!-- Main Scrolling Container -->
+        <div class="champion-slider" id="championSlider">
+            
+            <!-- 🏆 WINNER CARD 1 -->
+            <div class="champion-card">
+                <div class="champion-photo-wrapper">
+                    <img src="mr.jpeg" alt="Team Innovators">
+                    <span class="champion-badge">👑 Mr.Pentaquest</span>
+                </div>
+                <div class="champion-info">
+                    <h3 class="champion-team">Sahil Sen</h3>
+                    
+                    <blockquote class="champion-quote">"PentaQuest pushed us to our limits. An unforgettable experience!"</blockquote>
+                    
+                </div>
+            </div>
+
+            <!-- 🏆 WINNER CARD 2 (Slide karke aayega) -->
+            <div class="champion-card">
+                <div class="champion-photo-wrapper">
+                    <img src="miss.jpeg" alt="Tech Wizards">
+                    <span class="champion-badge" style="background: #C0C0C0;">👑 Miss Pentaquest</span>
+                </div>
+                <div class="champion-info">
+                    <h3 class="champion-team">Rajni Patel</h3>
+                    
+                    <blockquote class="champion-quote">"The mentorship round was a game changer for our startup idea."</blockquote>
+                    
+                </div>
+            </div>
+
+            <!-- Future mein aur winners add karne ke liye bas ek aur <div class="champion-card"> copy paste kar dena yahan! -->
+
+        </div>
+
+        <!-- Right Arrow (Desktop ke liye) -->
+        <button class="slide-btn right-btn" onclick="slideRight()">&#10095;</button>
+
+    </div>
+</section>
 <!-- STARTUPS -->
 <section id="startups">
   <span class="section-tag reveal">Our Ventures</span>
