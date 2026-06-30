@@ -1730,7 +1730,7 @@ body.dark .hamburger span { background: #e8eaf6; }
     height: 100%; 
     object-fit: cover; 
     display: block; 
-    object-position: top; /* Face hamesha center me rahega */
+    object-position: center 25%; /* Face hamesha center me rahega */
 }
 /* Buttons (Arrows) */
 .slide-btn {
@@ -1768,14 +1768,17 @@ body.dark .hamburger span { background: #e8eaf6; }
 /* =========================================
    MOBILE RESPONSIVENESS (CAROUSEL SLIDER)
    ========================================= */
+/* =========================================
+   MOBILE RESPONSIVENESS (ANDROID & IOS)
+   ========================================= */
 @media screen and (max-width: 768px) {
     /* Mobile par card 85% width lega, taaki next card ka 15% hissa side mein dikhe! */
     .champion-card {
-        flex: 0 0 88%; 
+        flex: 0 0 88%;
         flex-direction: column;
-        height: auto;
+        height: auto; 
     }
-    
+
     /* Mobile par arrows hide kar do (log swipe karna pasand karte hain) */
     .slide-btn {
         display: none;
@@ -1783,6 +1786,10 @@ body.dark .hamburger span { background: #e8eaf6; }
 
     /* Image aur text mobile ke hisaab se adjust */
     .champion-photo-wrapper { width: 100%; height: 250px; }
+    
+    /* ⬇️ Chehra center mein lane wala code yahan hai ⬇️ */
+    .champion-photo-wrapper img { object-position: center 15%; }
+    
     .champion-info { width: 100%; padding: 25px; }
     .champion-team { font-size: 1.6rem; }
-  }
+}
